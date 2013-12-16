@@ -1,0 +1,384 @@
+La grammatica va cosi` modificata:
+
+1 Prog::= let Bind in Exp end | letrec Bind in Exp end
+2 Bind::= var = Exp X
+3 X::= and Bind | epsilon
+4 Exp ::= Prog | lambda(Seq_Var) Exp | ExpA | OPP(Seq_Exp) | if Exp then Exp else Exp
+5 ExpA::= T E1
+6 E1::= OPA T E1 | epsilon
+7 T::= F T1
+8 T1::= OPM F T1 | epsilon
+9 F::= var Y | exp_const | (ExpA)
+10 Y :: = (Seq_Exp) | epsilon
+11 OPA::= + | -
+12 OPM::= * | /
+13 OPP::= cons | car | cdr | eq | leq | atom
+14 Seq_Exp::= Exp Z | epsilon
+15 Z::= , Seq_Exp | epsilon
+16 Seq_Var ::= var Seq_var | epsilon
+
+
+CALCOLO DEL FIRST DI G_ll(1)
+============================
+
+i = 0
+-----
+FIRST(Prog): {}
+FIRST(Bind): {}
+FIRST(X): {}
+FIRST(Exp): {}
+FIRST(ExpA): {}
+FIRST(E1): {}
+FIRST(T): {}
+FIRST(T1): {}
+FIRST(F): {}
+FIRST(Y): {}
+FIRST(OPA): {}
+FIRST(OPM): {}
+FIRST(OPP): {}
+FIRST(Seq_Exp): {}
+FIRST(Z): {}
+FIRST(Seq_Var): {}
+
+i = 1
+-----
+FIRST(Prog): { let, letrec }
+FIRST(Bind): { var }
+FIRST(X): { and, epsilon }
+FIRST(Exp): { lambda, if }
+FIRST(ExpA): {}
+FIRST(E1): { epsilon }
+FIRST(T): {}
+FIRST(T1): { epsilon }
+FIRST(F): { var, exp_const, ( }
+FIRST(Y): { (, epsilon }
+FIRST(OPA): { +, - }
+FIRST(OPM): { *, / }
+FIRST(OPP): { cons, car, cdr, eq, leq, atom }
+FIRST(Seq_Exp): { epsilon }
+FIRST(Z): { ,, espilon }
+FIRST(Seq_Var): { var, epsilon }
+
+i = 2
+-----
+FIRST(Prog): { let, letrec }
+FIRST(Bind): { var }
+FIRST(X): { and, epsilon }
+FIRST(Exp): { lambda, if, let, letrec, cons, car, cdr, eq, leq, atom }
+FIRST(ExpA): {}
+FIRST(E1): { epsilon, +, -}
+FIRST(T): { var, exp_const, ( }
+FIRST(T1): { epsilon, *, / }
+FIRST(F): { var, exp_const, ( }
+FIRST(Y): { (, epsilon }
+FIRST(OPA): { +, - }
+FIRST(OPM): { *, / }
+FIRST(OPP): { cons, car, cdr, eq, leq, atom }
+FIRST(Seq_Exp): { epsilon, lambda, if, let, letrec, cons, car, cdr, eq, leq, atom }
+FIRST(Z): { ,, espilon }
+FIRST(Seq_Var): { var, epsilon }
+
+i = 3
+-----
+FIRST(Prog): { let, letrec }
+FIRST(Bind): { var }
+FIRST(X): { and, epsilon }
+FIRST(Exp): { lambda, if, let, letrec, cons, car, cdr, eq, leq, atom }
+FIRST(ExpA): { var, exp_const, ( }
+FIRST(E1): { epsilon, +, -}
+FIRST(T): { var, exp_const, ( }
+FIRST(T1): { epsilon, *, / }
+FIRST(F): { var, exp_const, ( }
+FIRST(Y): { (, epsilon }
+FIRST(OPA): { +, - }
+FIRST(OPM): { *, / }
+FIRST(OPP): { cons, car, cdr, eq, leq, atom }
+FIRST(Seq_Exp): { epsilon, lambda, if, let, letrec, cons, car, cdr, eq, leq, atom }
+FIRST(Z): { ,, espilon }
+FIRST(Seq_Var): { var, epsilon }
+
+i = 4
+-----
+FIRST(Prog): { let, letrec }
+FIRST(Bind): { var }
+FIRST(X): { and, epsilon }
+FIRST(Exp): { lambda, if, let, letrec, cons, car, cdr, eq, leq, atom, var, exp_const, ( }
+FIRST(ExpA): { var, exp_const, ( }
+FIRST(E1): { epsilon, +, -}
+FIRST(T): { var, exp_const, ( }
+FIRST(T1): { epsilon, *, / }
+FIRST(F): { var, exp_const, ( }
+FIRST(Y): { (, epsilon }
+FIRST(OPA): { +, - }
+FIRST(OPM): { *, / }
+FIRST(OPP): { cons, car, cdr, eq, leq, atom }
+FIRST(Seq_Exp): { epsilon, lambda, if, let, letrec, cons, car, cdr, eq, leq, atom }
+FIRST(Z): { ,, espilon }
+FIRST(Seq_Var): { var, epsilon }
+
+i = 5
+-----
+FIRST(Prog): { let, letrec }
+FIRST(Bind): { var }
+FIRST(X): { and, epsilon }
+FIRST(Exp): { lambda, if, let, letrec, cons, car, cdr, eq, leq, atom, var, exp_const, ( }
+FIRST(ExpA): { var, exp_const, ( }
+FIRST(E1): { epsilon, +, -}
+FIRST(T): { var, exp_const, ( }
+FIRST(T1): { epsilon, *, / }
+FIRST(F): { var, exp_const, ( }
+FIRST(Y): { (, epsilon }
+FIRST(OPA): { +, - }
+FIRST(OPM): { *, / }
+FIRST(OPP): { cons, car, cdr, eq, leq, atom }
+FIRST(Seq_Exp): { epsilon, lambda, if, let, letrec, cons, car, cdr, eq, leq, atom, var, exp_const, ( }
+FIRST(Z): { ,, espilon }
+FIRST(Seq_Var): { var, epsilon }
+
+i = 6
+-----
+FIRST(Prog): { let, letrec }
+FIRST(Bind): { var }
+FIRST(X): { and, epsilon }
+FIRST(Exp): { lambda, if, let, letrec, cons, car, cdr, eq, leq, atom, var, exp_const, ( }
+FIRST(ExpA): { var, exp_const, ( }
+FIRST(E1): { epsilon, +, -}
+FIRST(T): { var, exp_const, ( }
+FIRST(T1): { epsilon, *, / }
+FIRST(F): { var, exp_const, ( }
+FIRST(Y): { (, epsilon }
+FIRST(OPA): { +, - }
+FIRST(OPM): { *, / }
+FIRST(OPP): { cons, car, cdr, eq, leq, atom }
+FIRST(Seq_Exp): { epsilon, lambda, if, let, letrec, cons, car, cdr, eq, leq, atom, var, exp_const, ( }
+FIRST(Z): { ,, espilon }
+FIRST(Seq_Var): { var, epsilon }
+
+
+--- END
+
+
+CALCOLO DEL FOLLOW DI G_ll(1)
+============================
+
+i = 0
+-----
+FOLLOW(Prog): { $ }
+FOLLOW(Bind): {}
+FOLLOW(X): {}
+FOLLOW(Exp): {}
+FOLLOW(ExpA): {}
+FOLLOW(E1): {}
+FOLLOW(T): {}
+FOLLOW(T1): {}
+FOLLOW(F): {}
+FOLLOW(Y): {}
+FOLLOW(OPA): {}
+FOLLOW(OPM): {}
+FOLLOW(OPP): {}
+FOLLOW(Seq_Exp): {}
+FOLLOW(Z): {}
+FOLLOW(Seq_Var): {}
+
+i = 1
+-----
+FOLLOW(Prog): { $ }
+FOLLOW(Bind): { in }
+FOLLOW(X): {}
+FOLLOW(Exp): { end, and, then, else, , }
+FOLLOW(ExpA): { ) }
+FOLLOW(E1): {}
+FOLLOW(T): { +, - }
+FOLLOW(T1): {}
+FOLLOW(F): { *, / }
+FOLLOW(Y): {}
+FOLLOW(OPA): { var, exp_const, ( }
+FOLLOW(OPM): { var, exp_const, ( }
+FOLLOW(OPP): { ( }
+FOLLOW(Seq_Exp): { ) }
+FOLLOW(Z): {}
+FOLLOW(Seq_Var): { ) }
+
+i = 2
+-----
+FOLLOW(Prog): { $, end, then, else, , }
+FOLLOW(Bind): { in }
+FOLLOW(X): { in }
+FOLLOW(Exp): { end, and, then, else, ,, in }
+FOLLOW(ExpA): { ), end, and, then, else, , }
+FOLLOW(E1): { ) }
+FOLLOW(T): { +, -, ) }
+FOLLOW(T1): { +, - }
+FOLLOW(F): { *, /, +, - }
+FOLLOW(Y): { *, / }
+FOLLOW(OPA): { var, exp_const, ( }
+FOLLOW(OPM): { var, exp_const, ( }
+FOLLOW(OPP): { ( }
+FOLLOW(Seq_Exp): { ) }
+FOLLOW(Z): { ) }
+FOLLOW(Seq_Var): { ) }
+
+i = 3
+-----
+FOLLOW(Prog): { $, end, and, then, else, ,, in }
+FOLLOW(Bind): { in }
+FOLLOW(X): { in }
+FOLLOW(Exp): { end, and, then, else, ,, in, ) }
+FOLLOW(ExpA): { ), end, and, then, else, ,, in }
+FOLLOW(E1): { ), end, and, then, else, , }
+FOLLOW(T): { +, -, ), end, and, then, else, , }
+FOLLOW(T1): { +, -, ) }
+FOLLOW(F): { *, /, +, -, ) }
+FOLLOW(Y): { *, /, +, - }
+FOLLOW(OPA): { var, exp_const, ( }
+FOLLOW(OPM): { var, exp_const, ( }
+FOLLOW(OPP): { ( }
+FOLLOW(Seq_Exp): { ) }
+FOLLOW(Z): { ) }
+FOLLOW(Seq_Var): { ) }
+
+i = 4
+-----
+FOLLOW(Prog): { $, end, and, then, else, ,, in, ) }
+FOLLOW(Bind): { in }
+FOLLOW(X): { in }
+FOLLOW(Exp): { end, and, then, else, ,, in, ) }
+FOLLOW(ExpA): { ), end, and, then, else, ,, in }
+FOLLOW(E1): { ), end, and, then, else, ,, in }
+FOLLOW(T): { +, -, ), end, and, then, else, ,, in }
+FOLLOW(T1): { +, -, ), end, and, then, else, , }
+FOLLOW(F): { *, /, +, -, ), end, and, then, else, , }
+FOLLOW(Y): { *, /, +, -, ) }
+FOLLOW(OPA): { var, exp_const, ( }
+FOLLOW(OPM): { var, exp_const, ( }
+FOLLOW(OPP): { ( }
+FOLLOW(Seq_Exp): { ) }
+FOLLOW(Z): { ) }
+FOLLOW(Seq_Var): { ) }
+
+i = 5
+-----
+FOLLOW(Prog): { $, end, and, then, else, ,, in, ) }
+FOLLOW(Bind): { in }
+FOLLOW(X): { in }
+FOLLOW(Exp): { end, and, then, else, ,, in, ) }
+FOLLOW(ExpA): { ), end, and, then, else, ,, in }
+FOLLOW(E1): { ), end, and, then, else, ,, in }
+FOLLOW(T): { +, -, ), end, and, then, else, ,, in }
+FOLLOW(T1): { +, -, ), end, and, then, else, ,, in }
+FOLLOW(F): { *, /, +, -, ), end, and, then, else, ,, in }
+FOLLOW(Y): { *, /, +, -, ), end, and, then, else, , }
+FOLLOW(OPA): { var, exp_const, ( }
+FOLLOW(OPM): { var, exp_const, ( }
+FOLLOW(OPP): { ( }
+FOLLOW(Seq_Exp): { ) }
+FOLLOW(Z): { ) }
+FOLLOW(Seq_Var): { ) }
+
+i = 6
+-----
+FOLLOW(Prog): { $, end, and, then, else, ,, in, ) }
+FOLLOW(Bind): { in }
+FOLLOW(X): { in }
+FOLLOW(Exp): { end, and, then, else, ,, in, ) }
+FOLLOW(ExpA): { ), end, and, then, else, ,, in }
+FOLLOW(E1): { ), end, and, then, else, ,, in }
+FOLLOW(T): { +, -, ), end, and, then, else, ,, in }
+FOLLOW(T1): { +, -, ), end, and, then, else, ,, in }
+FOLLOW(F): { *, /, +, -, ), end, and, then, else, ,, in }
+FOLLOW(Y): { *, /, +, -, ), end, and, then, else, ,, in }
+FOLLOW(OPA): { var, exp_const, ( }
+FOLLOW(OPM): { var, exp_const, ( }
+FOLLOW(OPP): { ( }
+FOLLOW(Seq_Exp): { ) }
+FOLLOW(Z): { ) }
+FOLLOW(Seq_Var): { ) }
+
+i = 7
+-----
+FOLLOW(Prog): { $, end, and, then, else, ,, in, ) }
+FOLLOW(Bind): { in }
+FOLLOW(X): { in }
+FOLLOW(Exp): { end, and, then, else, ,, in, ) }
+FOLLOW(ExpA): { ), end, and, then, else, ,, in }
+FOLLOW(E1): { ), end, and, then, else, ,, in }
+FOLLOW(T): { +, -, ), end, and, then, else, ,, in }
+FOLLOW(T1): { +, -, ), end, and, then, else, ,, in }
+FOLLOW(F): { *, /, +, -, ), end, and, then, else, ,, in }
+FOLLOW(Y): { *, /, +, -, ), end, and, then, else, ,, in }
+FOLLOW(OPA): { var, exp_const, ( }
+FOLLOW(OPM): { var, exp_const, ( }
+FOLLOW(OPP): { ( }
+FOLLOW(Seq_Exp): { ) }
+FOLLOW(Z): { ) }
+FOLLOW(Seq_Var): { ) }
+
+
+--- END
+
+
+
+1 Prog::= let Bind in Exp end | letrec Bind in Exp end
+2 Bind::= var = Exp X
+3 X::= and Bind | epsilon
+4 Exp ::= Prog | lambda(Seq_Var) Exp | ExpA | OPP(Seq_Exp) | if Exp then Exp else Exp
+5 ExpA::= T E1
+6 E1::= OPA T E1 | epsilon
+7 T::= F T1
+8 T1::= OPM F T1 | epsilon
+9 F::= var Y | exp_const | (ExpA)
+10 Y :: = (Seq_Exp) | epsilon
+11 OPA::= + | -
+12 OPM::= * | /
+13 OPP::= cons | car | cdr | eq | leq | atom
+14 Seq_Exp::= Exp Z | epsilon
+15 Z::= , Seq_Exp | epsilon
+16 Seq_Var ::= var Seq_var | epsilon
+
+
+
+FIRST
+-----
+FIRST(Prog): { let, letrec }
+FIRST(Bind): { var }
+FIRST(X): { and, epsilon }
+FIRST(Exp): { lambda, if, let, letrec, cons, car, cdr, eq, leq, atom, var, exp_const, ( }
+FIRST(ExpA): { var, exp_const, ( }
+FIRST(E1): { epsilon, +, -}
+FIRST(T): { var, exp_const, ( }
+FIRST(T1): { epsilon, *, / }
+FIRST(F): { var, exp_const, ( }
+FIRST(Y): { (, epsilon }
+FIRST(OPA): { +, - }
+FIRST(OPM): { *, / }
+FIRST(OPP): { cons, car, cdr, eq, leq, atom }
+FIRST(Seq_Exp): { epsilon, lambda, if, let, letrec, cons, car, cdr, eq, leq, atom, var, exp_const, ( }
+FIRST(Z): { ,, espilon }
+FIRST(Seq_Var): { var, epsilon }
+
+
+FOLLOW
+------
+FOLLOW(Prog): { $, end, and, then, else, ,, in, ) }
+FOLLOW(Bind): { in }
+FOLLOW(X): { in }
+FOLLOW(Exp): { end, and, then, else, ,, in, ) }
+FOLLOW(ExpA): { ), end, and, then, else, ,, in }
+FOLLOW(E1): { ), end, and, then, else, ,, in }
+FOLLOW(T): { +, -, ), end, and, then, else, ,, in }
+FOLLOW(T1): { +, -, ), end, and, then, else, ,, in }
+FOLLOW(F): { *, /, +, -, ), end, and, then, else, ,, in }
+FOLLOW(Y): { *, /, +, -, ), end, and, then, else, ,, in }
+FOLLOW(OPA): { var, exp_const, ( }
+FOLLOW(OPM): { var, exp_const, ( }
+FOLLOW(OPP): { ( }
+FOLLOW(Seq_Exp): { ) }
+FOLLOW(Z): { ) }
+FOLLOW(Seq_Var): { ) }
+
+
+
+
+
+
+
