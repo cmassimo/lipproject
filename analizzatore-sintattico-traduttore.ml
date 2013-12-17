@@ -1,5 +1,8 @@
 (* PARSER LispKit  incompleto Novembre 2013*)
 
+Control.Print.printDepth := 20;
+Control.Print.printLegth := 20;
+
 use "analizzatore-lessicale.ml";
 
 (* richiamare l'analizzatore lessicale *)
@@ -183,9 +186,16 @@ nelle diverse parti del programma *)
       else
         let
           val (trad_var, var_exp) = var(tlist)
-          val (trad_y, yexp) = Y(var_exp)
         in
-          (CALL(trad_var, trad_y), yexp)
+          if (trova_stringa(var_exp, "("))
+          then
+            let
+              val (trad_y, yexp) = Y(var_exp)
+            in
+              (CALL(trad_var, trad_y), yexp)
+            end
+          else 
+            (trad_var, var_exp)
         end
     (* espressione non costante *)
 
