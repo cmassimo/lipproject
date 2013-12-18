@@ -1,7 +1,7 @@
 (* PARSER LispKit  incompleto Novembre 2013*)
 
-Control.Print.printDepth := 20;
-Control.Print.printLegth := 20;
+Control.Print.printDepth := 20000;
+Control.Print.printLength := 20000;
 
 use "analizzatore-lessicale.ml";
 
@@ -121,7 +121,7 @@ nelle diverse parti del programma *)
       let 
         val (trad_exp, exp)= Exp(c)
       in
-        if not (trova_stringa(exp, "then"))
+        if not(trova_stringa(exp, "then"))
         then
           raise Etwo("dopo if exp niente then", g(exp))
         else
@@ -177,7 +177,7 @@ nelle diverse parti del programma *)
       if (trova_stringa(tlist, "("))
       then
         let
-          val (trad_expa, expa) = ExpA(tlist)
+          val (trad_expa, expa) = ExpA(tl(tlist))
         in
           if not(trova_stringa(expa, ")"))
           then raise Etwo("manca ) dopo (ExpA", g(expa))
@@ -288,7 +288,7 @@ nelle diverse parti del programma *)
           val (trad_seqvar, seqvar) = Seq_Var(tl(c))
         in
           if trova_stringa(seqvar,")")
-          then (nil, tl(seqvar))
+          then (trad_seqvar, tl(seqvar))
           else raise ex("non si chiude la )")
         end
 
@@ -324,13 +324,13 @@ nelle diverse parti del programma *)
   (*esempi per test*)
 
 
-(*val S="letrec  FACT = lambda ( X ) if  eq ( X, 0 ) then 1 else  X*FACT(  X - 1 )"^
+val S="letrec  FACT = lambda ( X ) if  eq ( X, 0 ) then 1 else  X*FACT(  X - 1 )"^
 "and G = lambda ( H L ) if  eq ( nil, L ) then L else cons( H(car( L ) ),"^ 
 "G ( H, cdr ( L ) )) in G ( FACT, cons(1 ,cons(2, cons(3, nil))) ) end $";
-*)
 
 
-val S= "let x= 5 and y= 6 in x * 3 + y * 2 * x + x * y end $";
+
+(*val S= "let x= 5 and y= 6 in x * 3 + y * 2 * x + x * y end $";*)
 
 
 
