@@ -103,7 +103,7 @@ val C="letrec  FACT = lambda ( X ) if  eq ( X, 0 ) then 1 else  X*FACT(  X - 1 )
 *)
 
 
-val S= "let x= 5 and y= 6 in x*3 + y * 2* x + x*y end $";
+(*val S= "let x= 5 and y= 6 in x*3 + y * 2* x + x*y end $";*)
 
 (*val Tok=lexi(explode(S));
 

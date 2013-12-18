@@ -342,7 +342,7 @@ val S="letrec  FACT = lambda ( X ) if  eq ( X, 0 ) then 1 else  X*FACT(  X - 1 )
 
 
 
-val D = lexi(explode(S));
+(*val D = lexi(explode(S));
 
 val asd = let
   val q = (PROG(D) 
@@ -354,5 +354,5 @@ in
     (NIL, nil) => NIL |
     (x, SYM(a)::t) => x |
     (_, _) => NIL
-end;
+end;*)
 

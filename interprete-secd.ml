@@ -255,7 +255,7 @@ case HA(C) of
 
 
 (* Mostra che si puo' usare letrec anche con binders non-funzionali. Le var a sinistra non devono apparire a destra *)
-val S= "let z=2 in letrec x= 2+z and y= 2*z in x*y*z end end $";
+(*val S= "let z=2 in letrec x= 2+z and y= 2*z in x*y*z end end $";*)
 
 (* distribuisce FACT su una lista di interi
 
